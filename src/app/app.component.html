@@ -2,8 +2,15 @@
   <div class="menu-button" (click)="openMenu()">
     <h1>M</h1>
   </div>
+
+  <ul class="taskbar">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
   <div class="logo">
-    <img src="logo.jpg" alt="logo" >
+    <img src="http://localhost:63342/my-project-name/src/app/logo.jpg" alt="logo" >
   </div>
 </div>
 <div class="body" [ngClass]="{'body--menu':menuIsOpen}">
@@ -41,6 +48,7 @@
   <thead>
 
   <tr>
+
     <th>
     ID
     </th>
@@ -58,7 +66,9 @@
 
   <tbody>
     <ng-container *ngFor="let item of data; let i = index">
-    <tr [ngClass]="{'deleted': item.deleted == true}" >
+
+    <tr  [ngClass]="{'deleted': item.deleted == true }" >
+<div [ngClass]="{'deleted': item.deleted == true ,'selected': item.selected == true}" (click)=select(item)  class=" selectItem">
     <td>
       {{i+1}}
     </td>
@@ -71,16 +81,26 @@
     <td>
       {{item.specialization}}
     </td>
-    <td class="action" (click)="item.deleted = true">
-    x
-    </td>
+</div>
+      <td class="action" (click)="item.deleted = true" >
+        x
+      </td>
   </tr>
+
+
+
 
   </ng-container>
     </tbody>
 </table>
-  <div class="info">
-    <img alt="Avatar" class="info-img" src="avatar/img_avatar_men.png" />
+  <ng-container *ngFor="let item of data; let i = index">
+  <div class="info" *ngIf="item.selected == true">
+    <img alt="Avatar" class="info-img" src="http://localhost:63342/my-project-name/src/app/avatar/img_avatar_men.png" />
+    <h4>
+     {{name}}  {{surname}} <br>
+    </h4>
+    {{info}}
   </div>
+  </ng-container>
   </div>
 

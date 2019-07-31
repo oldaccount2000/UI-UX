@@ -7,7 +7,21 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class AppComponent implements OnInit  {
   data;
+  name;
+  surname;
+  info;
+  it: any = {
+    deleted: false
+  };
   menuIsOpen = false;
+  select($item) {
+    this.it.selected = false;
+    $item.selected = !$item.selected;
+    this.name = $item.name;
+    this.surname = $item.surName;
+    this.info = $item.description;
+    this.it = $item;
+  }
   openMenu() {
     this.menuIsOpen = !this.menuIsOpen;
   }

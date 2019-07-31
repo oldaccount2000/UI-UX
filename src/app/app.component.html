@@ -6,7 +6,9 @@
     logo
   </div>
 </div>
-<div class="menu" [ngClass]="{'menu--opened': this.menuIsOpen}">
+<div class="body" [ngClass]="{'body--menu':menuIsOpen}">
+<div class="menu" *ngIf="menuIsOpen">
+  <!-- [ngClass]="{'menu--opened': this.menuIsOpen}"> -->
   <div class="menu-item">
     link1
   </div>
@@ -16,4 +18,66 @@
   <div class="menu-item">
     link3
   </div>
+  <div class="menu-item">
+    link3
+  </div>
+  <div class="menu-item">
+  link3
 </div>
+  <div class="menu-item">
+  link3
+</div>
+  <div class="menu-item">
+  link3
+</div>
+  <div class="menu-item">
+  link3
+</div>
+  <div class="menu-item">
+  link3
+</div>
+</div>
+<table class="table">
+  <thead>
+
+  <tr>
+    <th>
+    ID
+    </th>
+    <th>
+      Name
+    </th>
+    <th>
+      Surname
+    </th>
+    <th>
+      Specialization
+    </th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngFor="let item of data; let i = index">
+    <tr [ngClass]="{'deleted': item.deleted == true}" >
+    <td>
+      {{i+1}}
+    </td>
+    <td>
+      {{item.name}}
+    </td>
+    <td>
+      {{item.surName}}
+    </td>
+    <td>
+      {{item.specialization}}
+    </td>
+    <td class="action" (click)="item.deleted = true">
+    x
+    </td>
+  </tr>
+
+  </ng-container>
+    </tbody>
+</table>
+  </div>
+

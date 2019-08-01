@@ -1,3 +1,4 @@
+<div class="container" (scroll)="scroll($event)">
 <div class="header">
   <div class="menu-button" (click)="openMenu()">
     <h1>M</h1>
@@ -10,7 +11,7 @@
     <li><a href="#about">About</a></li>
   </ul>
   <div class="logo">
-    <img src="http://localhost:63342/my-project-name/src/app/logo.jpg" alt="logo" >
+   <!-- <img src="http://localhost:63342/my-project-name/src/app/logo.jpg" alt="logo" > -->
   </div>
 </div>
 <div class="body" [ngClass]="{'body--menu':menuIsOpen}">
@@ -45,7 +46,7 @@
 </div>
 </div>
 <table class="table">
-  <thead>
+  <thead [ngStyle]="{'transform': 'translateY(' + scrollX + 'px)'}">
 
   <tr>
 
@@ -61,6 +62,9 @@
     <th>
       Specialization
     </th>
+    <th>
+    </th>
+
   </tr>
   </thead>
 
@@ -95,12 +99,13 @@
 </table>
   <ng-container *ngFor="let item of data; let i = index">
   <div class="info" *ngIf="item.selected == true">
-    <img alt="Avatar" class="info-img" src="http://localhost:63342/my-project-name/src/app/avatar/img_avatar_men.png" />
+    <img alt="Avatar" class="info-img" src="assets/img_avatar_men.png" />
     <h4>
-     {{name}}  {{surname}} <br>
+     {{this.it.name}}  {{this.it.surName}} <br>
     </h4>
-    {{info}}
+    {{this.it.description}}
   </div>
   </ng-container>
   </div>
 
+</div>
